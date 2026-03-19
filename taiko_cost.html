@@ -4,11 +4,13 @@
 <meta charset="UTF-8">
 <title>太鼓の達人 コスト計算機</title>
 <style>
-body { font-family: sans-serif; max-width: 700px; margin: 40px auto; line-height: 1.6; }
-label { display: block; margin-top: 10px; }
-input, select { margin-top: 5px; padding: 5px; width: 100%; box-sizing: border-box; }
-button { margin-top: 15px; padding: 8px 12px; }
-.result { font-weight: bold; margin-top: 15px; font-size: 1.2em; }
+body { font-family: sans-serif; max-width: 700px; margin: 40px auto; line-height: 1.6; padding: 0 20px; }
+label { display: block; margin-top: 15px; font-weight: bold; }
+input, select { margin-top: 5px; padding: 8px; width: 100%; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; }
+button { margin-top: 20px; padding: 10px 20px; background-color: #ff4500; color: white; border: none; border-radius: 4px; cursor: pointer; width: 100%; font-size: 1.1em; }
+button:hover { background-color: #e63e00; }
+.result { font-weight: bold; margin-top: 20px; font-size: 1.4em; color: #333; border-top: 2px solid #eee; padding-top: 10px; }
+.info-text { font-size: 0.85em; color: #d00; margin-top: 5px; font-weight: normal; }
 </style>
 </head>
 <body>
@@ -24,12 +26,14 @@ button { margin-top: 15px; padding: 8px 12px; }
   <option value="金名人以下">金名人以下</option>
 </select>
 
-<label id="releaseLabel">作の年:</label>
-<select id="release">
-  <option>今作</option>
-  <option>前作</option>
-  <option>前々作</option>
-</select>
+<div id="releaseContainer">
+    <label id="releaseLabel">取得時期:</label>
+    <select id="release" onchange="updateFields()">
+      <option value="今作">今作</option>
+      <option value="前作">前作</option>
+      <option value="前々作">前々作</option>
+    </select>
+</div>
 
 <div id="inputFields"></div>
 
@@ -38,7 +42,7 @@ button { margin-top: 15px; padding: 8px 12px; }
 <p class="result">最終コスト: <span id="result">-</span></p>
 
 <script>
-// 段位スコア
+// 段位スコア（ベース値）
 function getRankScore(rank, release) {
     let score = 0;
     switch(rank) {
@@ -46,89 +50,80 @@ function getRankScore(rank, release) {
         case "達人": score = 24; break;
         case "金超人": score = 16; break;
         case "超人": score = 12; break;
-        default: score = 6; // 金名人以下
+        case "金名人以下": score = 6; break;
+        default: score = 0;
     }
-
-    if(rank !== "金達人") {
+    // 時期による減算（金達人・金名人以下以外）
+    if(rank !== "金達人" && rank !== "金名人以下") {
         if(release === "前作") score -= 2;
         if(release === "前々作") score -= 4;
     }
-
     return score;
 }
 
-// 全良ボーナス
+// 全良ボーナス計算ロジック
 function getFullComboBonus(rank, values) {
     if(rank === "達人") {
         const sPlus = parseInt(values.sPlus) || 0;
         const s = parseInt(values.s) || 0;
         let bonus = 0;
-        if(sPlus >= 20) bonus += 2;
-        else if(sPlus >= 10) bonus += 1;
-
-        if(s >= 20) bonus += 3;
-        else if(s >= 10) bonus += 2;
-        else if(s >= 5) bonus += 1;
-
-        return bonus; // 最大 +5
+        if(sPlus >= 20) bonus += 2; else if(sPlus >= 10) bonus += 1;
+        if(s >= 20) bonus += 3; else if(s >= 10) bonus += 2; else if(s >= 5) bonus += 1;
+        return bonus;
     } else if(rank === "超人" || rank === "金超人") {
         const a = parseInt(values.a) || 0;
-        if(a >= 100) return 6;
-        else if(a >= 85) return 5;
-        else if(a >= 70) return 4;
-        else if(a >= 55) return 3;
-        else if(a >= 40) return 2;
-        else if(a >= 25) return 1;
+        if(a >= 100) return 6; else if(a >= 85) return 5; else if(a >= 70) return 4;
+        else if(a >= 55) return 3; else if(a >= 40) return 2; else if(a >= 25) return 1;
         return 0;
-    } else { // 金名人以下
+    } else if(rank === "金名人以下") {
         const x10 = parseInt(values.x10) || 0;
-        if(x10 >= 100) return 4;
-        else if(x10 >= 75) return 3;
-        else if(x10 >= 50) return 2;
-        else if(x10 >= 25) return 1;
+        if(x10 >= 100) return 4; else if(x10 >= 75) return 3;
+        else if(x10 >= 50) return 2; else if(x10 >= 25) return 1;
         return 0;
     }
+    return 0;
 }
 
-// 入力欄更新
+// 入力欄の動的生成
 function updateFields() {
     const rank = document.getElementById('rank').value;
+    const release = document.getElementById('release').value;
     const container = document.getElementById('inputFields');
-    const releaseSelect = document.getElementById('release');
-    const releaseLabel = document.getElementById('releaseLabel');
+    const releaseContainer = document.getElementById('releaseContainer');
 
-    // 金達人なら作の年セレクトと全良欄を非表示
-    if(rank === '金達人') {
-        releaseSelect.style.display = 'none';
-        releaseLabel.style.display = 'none';
+    // 金達人と金名人以下は時期選択を隠す
+    if(rank === '金達人' || rank === '金名人以下') {
+        releaseContainer.style.display = 'none';
     } else {
-        releaseSelect.style.display = 'block';
-        releaseLabel.style.display = 'block';
+        releaseContainer.style.display = 'block';
     }
 
     container.innerHTML = '';
 
-    if(rank === '達人') {
+    // ランクに基づき、ラベルと入力欄を表示
+    if(rank === '金達人') {
+        container.innerHTML = '<p class="info-text">※金達人は追加ボーナスなし</p>';
+    } else if(rank === '達人') {
         container.innerHTML = `
             <label>難易度表S+以上全良数:</label>
-            <input type="number" id="sPlus" value="0">
+            <input type="number" id="sPlus" value="0" min="0">
             <label>難易度表S全良数:</label>
-            <input type="number" id="s" value="0">
+            <input type="number" id="s" value="0" min="0">
         `;
     } else if(rank === '超人' || rank === '金超人') {
         container.innerHTML = `
-            <label>難易度表A以上全良数:</label>
-            <input type="number" id="a" value="0">
+            <label>難易度表B以上全良数:</label>
+            <input type="number" id="a" value="0" min="0">
         `;
     } else if(rank === '金名人以下') {
         container.innerHTML = `
-            <label>☆10全良数:</label>
-            <input type="number" id="x10" value="0">
+            <label>☆10可1桁数(可=1、不可=2として合計9以下):</label>
+            <input type="number" id="x10" value="0" min="0">
         `;
-    } 
+    }
 }
 
-// 計算
+// 計算実行
 function calculate() {
     const rank = document.getElementById('rank').value;
     const release = document.getElementById('release').value;
@@ -141,15 +136,15 @@ function calculate() {
     };
 
     const rankScore = getRankScore(rank, release);
-    const bonus = getFullComboBonus(rank, values);
-
-    // 金達人は全良ボーナスを加算しない
-    const finalBonus = (rank === '金達人') ? 0 : bonus;
-    const cost = rankScore + finalBonus;
+    
+    // 全良ボーナスを計算
+    const bonus = (rank === '金達人') ? 0 : getFullComboBonus(rank, values);
+    const cost = rankScore + bonus;
+    
     document.getElementById('result').textContent = cost;
 }
 
-// 初期表示
+// 初期化
 updateFields();
 </script>
 
