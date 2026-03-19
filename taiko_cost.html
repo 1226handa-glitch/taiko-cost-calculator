@@ -81,7 +81,7 @@ function getFullComboBonus(rank, values) {
         const sPlus = parseInt(values.sPlus) || 0;
         const s = parseInt(values.s) || 0;
         let bonus = 0;
-        if(sPlus >= 20) bonus += 3; else if(sPlus >= 10) bonus += 1; else if(sPlus >= 5) bonus += 1;
+        if(sPlus >= 20) bonus += 3; else if(sPlus >= 10) bonus += 2; else if(sPlus >= 5) bonus += 1;
         if(s >= 20) bonus += 2; else if(s >= 10) bonus += 1;
         return bonus;
     } else if(rank === "超人" || rank === "金超人") {
