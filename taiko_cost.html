@@ -12,12 +12,17 @@ button:hover { background-color: #e63e00; }
 .result { font-weight: bold; margin-top: 20px; font-size: 1.4em; color: #333; border-top: 2px solid #eee; padding-top: 10px; }
 .info-text { font-size: 0.85em; color: #d00; margin-top: 5px; font-weight: normal; }
 
-/* --- ここから追加したスタイル --- */
-.difficulty-chart {
-  max-width: 100%; /* 横幅を画面内に収める */
-  height: auto;      /* 縦横比を保つ */
-  margin-top: 5px;  /* ラベルとの隙間 */
-  display: block;   /* 下に要素が来るようにする */
+/* --- リンク用のスタイルに変更しました --- */
+.chart-link {
+  display: inline-block;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  color: #0066cc;
+  text-decoration: underline;
+  font-size: 0.9em;
+}
+.chart-link:hover {
+  color: #004499;
 }
 /* --- ここまで --- */
 </style>
@@ -116,22 +121,23 @@ function updateFields() {
         container.innerHTML = `
             <label>難易度表S+以上全良数:</label>
             <input type="number" id="sPlus" value="0" min="0">
-            <img src="SPlus.jpg" alt="難易度表S+" class="difficulty-chart">
+            <a href="SPlus.jpg" target="_blank" class="chart-link">難易度表S+の画像を確認する</a>
+            
             <label>難易度表S全良数:</label>
             <input type="number" id="s" value="0" min="0">
-            <img src="S.jpg" alt="難易度表S" class="difficulty-chart">
+            <a href="S.jpg" target="_blank" class="chart-link">難易度表Sの画像を確認する</a>
         `;
     } else if(rank === '超人' || rank === '金超人') {
         container.innerHTML = `
             <label>難易度表B以上全良数:</label>
             <input type="number" id="b" value="0" min="0">
-            <img src="B.jpg" alt="難易度表B" class="difficulty-chart">
+            <a href="B.jpg" target="_blank" class="chart-link">難易度表Bの画像を確認する</a>
         `;
     } else if(rank === '金名人以下') {
         container.innerHTML = `
             <label>難易度表可1桁数(可=1、不可=2として合計9以下):</label>
             <input type="number" id="x10" value="0" min="0">
-            <img src="x10.jpg" alt="難易度表可1桁" class="difficulty-chart">
+            <a href="x10.jpg" target="_blank" class="chart-link">難易度表可1桁の画像を確認する</a>
         `;
     }
 }
