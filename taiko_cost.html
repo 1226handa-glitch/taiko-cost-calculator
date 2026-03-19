@@ -71,9 +71,9 @@ function getFullComboBonus(rank, values) {
         if(s >= 20) bonus += 3; else if(s >= 10) bonus += 2; else if(s >= 5) bonus += 1;
         return bonus;
     } else if(rank === "超人" || rank === "金超人") {
-        const a = parseInt(values.a) || 0;
-        if(a >= 100) return 6; else if(a >= 85) return 5; else if(a >= 70) return 4;
-        else if(a >= 55) return 3; else if(a >= 40) return 2; else if(a >= 25) return 1;
+        const b = parseInt(values.b) || 0;
+        if(b >= 100) return 6; else if(b >= 85) return 5; else if(b >= 70) return 4;
+        else if(b >= 55) return 3; else if(b >= 40) return 2; else if(b >= 25) return 1;
         return 0;
     } else if(rank === "金名人以下") {
         const x10 = parseInt(values.x10) || 0;
@@ -113,7 +113,7 @@ function updateFields() {
     } else if(rank === '超人' || rank === '金超人') {
         container.innerHTML = `
             <label>難易度表B以上全良数:</label>
-            <input type="number" id="a" value="0" min="0">
+            <input type="number" id="b" value="0" min="0">
         `;
     } else if(rank === '金名人以下') {
         container.innerHTML = `
@@ -131,7 +131,7 @@ function calculate() {
     const values = {
         sPlus: document.getElementById('sPlus') ? document.getElementById('sPlus').value : 0,
         s: document.getElementById('s') ? document.getElementById('s').value : 0,
-        a: document.getElementById('a') ? document.getElementById('a').value : 0,
+        b: document.getElementById('b') ? document.getElementById('b').value : 0,
         x10: document.getElementById('x10') ? document.getElementById('x10').value : 0
     };
 
