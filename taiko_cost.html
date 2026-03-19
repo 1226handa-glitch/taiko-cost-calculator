@@ -121,7 +121,7 @@ function updateFields() {
         container.innerHTML = `
             <label>難易度表S+以上全良数:</label>
             <input type="number" id="sPlus" value="0" min="0">
-            <a href="SPlus.jpg" target="_blank" class="chart-link">難易度表S+の画像を確認する</a>
+            <a href="SPlus.jpg" target="_blank" class="chart-link">難易度表S+以上の画像を確認する</a>
             
             <label>難易度表S全良数:</label>
             <input type="number" id="s" value="0" min="0">
@@ -131,13 +131,13 @@ function updateFields() {
         container.innerHTML = `
             <label>難易度表B以上全良数:</label>
             <input type="number" id="b" value="0" min="0">
-            <a href="B.jpg" target="_blank" class="chart-link">難易度表Bの画像を確認する</a>
+            <a href="B.jpg" target="_blank" class="chart-link">難易度表B以上の画像を確認する</a>
         `;
     } else if(rank === '金名人以下') {
         container.innerHTML = `
             <label>難易度表可1桁数(可=1、不可=2として合計9以下):</label>
             <input type="number" id="x10" value="0" min="0">
-            <a href="x10.jpg" target="_blank" class="chart-link">難易度表可1桁の画像を確認する</a>
+            <a href="x10.jpg" target="_blank" class="chart-link">難易度表の画像を確認する</a>
         `;
     }
 }
