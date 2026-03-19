@@ -75,7 +75,7 @@ function getRankScore(rank, release) {
     return score;
 }
 
-// 全良ボーナス計算ロジック
+// 実績計算ロジック
 function getFullComboBonus(rank, values) {
     if(rank === "達人") {
         const sPlus = parseInt(values.sPlus) || 0;
@@ -116,7 +116,7 @@ function updateFields() {
 
     // ランクに基づき、ラベルと入力欄を表示
     if(rank === '金達人') {
-        container.innerHTML = '<p class="info-text">※金達人は追加ボーナスなし</p>';
+        container.innerHTML = '<p class="info-text">※金達人は追加なし</p>';
     } else if(rank === '達人') {
         container.innerHTML = `
             <label>難易度表S+以上全良数:</label>
@@ -156,7 +156,7 @@ function calculate() {
 
     const rankScore = getRankScore(rank, release);
     
-    // 全良ボーナスを計算
+    // 実績を計算
     const bonus = (rank === '金達人') ? 0 : getFullComboBonus(rank, values);
     const cost = rankScore + bonus;
     
