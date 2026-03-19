@@ -113,21 +113,27 @@ function updateFields() {
     if(rank === '金達人') {
         container.innerHTML = '<p class="info-text">※金達人は追加ボーナスなし</p>';
     } else if(rank === '達人') {
+        // --- S.jpg を追加しました ---
         container.innerHTML = `
             <label>難易度表S+以上全良数:</label>
             <img src="SPlus.jpg" alt="難易度表S+" class="difficulty-chart">
             <input type="number" id="sPlus" value="0" min="0">
             <label>難易度表S全良数:</label>
+            <img src="S.jpg" alt="難易度表S" class="difficulty-chart">
             <input type="number" id="s" value="0" min="0">
         `;
     } else if(rank === '超人' || rank === '金超人') {
+        // --- B.jpg を追加しました ---
         container.innerHTML = `
             <label>難易度表B以上全良数:</label>
+            <img src="B.jpg" alt="難易度表B" class="difficulty-chart">
             <input type="number" id="b" value="0" min="0">
         `;
     } else if(rank === '金名人以下') {
+        // --- x10.jpg を追加しました ---
         container.innerHTML = `
             <label>難易度表可1桁数(可=1、不可=2として合計9以下):</label>
+            <img src="x10.jpg" alt="難易度表可1桁" class="difficulty-chart">
             <input type="number" id="x10" value="0" min="0">
         `;
     }
