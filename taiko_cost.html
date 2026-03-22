@@ -45,7 +45,7 @@ button:hover { background-color: #e63e00; }
     <select id="release" onchange="updateFields()">
       <option value="今作">今作</option>
       <option value="前作">前作</option>
-      <option value="前々作">前々作</option>
+      <option value="前々作以前">前々作以前</option>
     </select>
 </div>
 
@@ -70,7 +70,7 @@ function getRankScore(rank, release) {
     // 時期による減算（金達人・金名人以下以外）
     if(rank !== "金達人" && rank !== "金名人以下") {
         if(release === "前作") score -= 2;
-        if(release === "前々作") score -= 4;
+        if(release === "前々作以前") score -= 4;
     }
     return score;
 }
