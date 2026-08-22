@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>太鼓の達人 コスト計算機(新)</title>
+<style>
+body { font-family: sans-serif; max-width: 700px; margin: 40px auto; line-height: 1.6; padding: 0 20px; }
+label { display: block; margin-top: 15px; font-weight: bold; }
+input, select { margin-top: 5px; padding: 8px; width: 100%; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; }
+button { margin-top: 20px; padding: 10px 20px; background-color: #ff4500; color: white; border: none; border-radius: 4px; cursor: pointer; width: 100%; font-size: 1.1em; }
+button:hover { background-color: #e63e00; }
+.result { font-weight: bold; margin-top: 20px; font-size: 1.4em; color: #333; border-top: 2px solid #eee; padding-top: 10px; }
+.info-text { font-size: 0.85em; color: #d00; margin-top: 5px; font-weight: normal; }
+.chart-link {
+  display: inline-block;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  color: #0066cc;
+  text-decoration: underline;
+  font-size: 0.9em;
+}
+.chart-link:hover { color: #004499; }
+</style>
+</head>
+<body>
+
+<h1>太鼓の達人 コスト計算機</h1>
+
+<label>自己最高段位:</label>
+<select id="rank" onchange="updateFields()">
+  <option value="金達人">金達人</option>
+  <option value="達人">達人</option>
+  <option value="金超人">金超人</option>
+  <option value="超人">超人</option>
+  <option value="金名人以下">金名人以下</option>
+</select>
+
+<div id="releaseContainer">
+    <label id="releaseLabel">取得時期:</label>
+    <select id="release" onchange="updateFields()">
+      <option value="今作">今作</option>
+      <option value="前作">前作</option>
+      <option value="前々作以前">前々作以前</option>
+    </select>
+</div>
+
+<!-- 段位ごとの固有入力項目がここに入ります -->
+<div id="inputFields"></div>
+
+<button onclick="calculate()">計算</button>
+
+<p class="result">コスト: <span id="result">-</span></p>
+
+<script>
+// 段位スコア（ベース値）と時期による減算
+function getRankScore(rank, release) {
+    let score = 0;
+    switch(rank) {
+        case "金達人": score = 30; break;
+        case "達人": score = 24; break;
+        case "金超人": score = 16; break;
+        case "超人": score = 12; break;
+        case "金名人以下": score = 6; break;
+        default: score = 0;
+    }
+    // 時期による減算（金達人・金名人以下は減算しない）
+    if(rank !== "金達人" && rank !== "金名人以下") {
+        if(release === "前作") score -= 2;
+        if(release === "前々作以前") score -= 4;
+    }
+    return score;
+}
+
+// 入力欄の動的生成
+function updateFields() {
+    const rank = document.getElementById('rank').value;
+    const releaseContainer = document.getElementById('releaseContainer');
+    const container = document.getElementById('inputFields');
+
+    // 金達人と金名人以下は取得時期を隠す（元の仕様を維持）
+    if(rank === '金達人' || rank === '金名人以下') {
+        releaseContainer.style.display = 'none';
+    } else {
+        releaseContainer.style.display = 'block';
+    }
+
+    container.innerHTML = '';
+
+    // 段位に応じた専用の入力フォームを生成
+    if(rank === '金達人') {
+        container.innerHTML = '<p class="info-text">※金達人は追加のコスト項目はありません</p>';
+    } 
+    else if(rank === '達人') {
+        container.innerHTML = `
+            <label>SS全良の有無:</label>
+            <select id="ssFc">
+                <option value="0">無</option>
+                <option value="1">有</option>
+            </select>
+
+            <label>難易度表S+以上全良数:</label>
+            <input type="number" id="sPlus" value="0" min="0">
+            <a href="SPlus.jpg" target="_blank" class="chart-link">難易度表S+以上の画像を確認する</a>
+            
+            <label>難易度表S全良数:</label>
+            <input type="number" id="s" value="0" min="0">
+            <a href="S.jpg" target="_blank" class="chart-link">難易度表Sの画像を確認する</a>
+        `;
+    } 
+    else if(rank === '金超人') {
+        container.innerHTML = `
+            <label>全良済みの最高難易度:</label>
+            <select id="maxFcDifficulty">
+                <option value="0">なし</option>
+                <option value="6">SS</option>
+                <option value="5">S+</option>
+                <option value="4">S</option>
+                <option value="3">A+</option>
+                <option value="2">A</option>
+                <option value="1">B</option>
+                <option value="0">C以下</option>
+            </select>
+        `;
+    } 
+    else if(rank === '超人') {
+        container.innerHTML = `
+            <label>全良済みの最高難易度:</label>
+            <select id="maxFcDifficulty">
+                <option value="0">なし</option>
+                <option value="6">S+以上</option>
+                <option value="5">S</option>
+                <option value="4">A+</option>
+                <option value="3">A</option>
+                <option value="2">B</option>
+                <option value="1">C</option>
+                <option value="0">D以下</option>
+            </select>
+        `;
+    } 
+    else if(rank === '金名人以下') {
+        // 前回ご指定いただいたスコア（S以上=6, A+=5, A=4, B=3, C以下=2）を適用しています
+        container.innerHTML = `
+            <label>全良済みの最高難易度:</label>
+            <select id="maxFcDifficulty">
+                <option value="0">なし</option>
+                <option value="6">S以上</option>
+                <option value="5">A+</option>
+                <option value="4">A</option>
+                <option value="3">B</option>
+                <option value="2">C以下</option>
+            </select>
+        `;
+    }
+}
+
+// 計算実行
+function calculate() {
+    const rank = document.getElementById('rank').value;
+    const release = document.getElementById('release').value;
+    
+    // ベースとなる段位スコアを取得
+    let cost = getRankScore(rank, release);
+
+    // 段位ごとの追加ボーナスを計算して加算
+    if(rank === '達人') {
+        const ssFcBonus = parseInt(document.getElementById('ssFc').value) || 0;
+        const sPlus = parseInt(document.getElementById('sPlus').value) || 0;
+        const s = parseInt(document.getElementById('s').value) || 0;
+        
+        cost += ssFcBonus; // SS全良があれば +1
+
+        // 達人の全良数ボーナス
+        if(sPlus >= 20) cost += 3; else if(sPlus >= 10) cost += 2; else if(sPlus >= 5) cost += 1;
+        if(s >= 20) cost += 2; else if(s >= 10) cost += 1;
+    } 
+    else if (rank === '金超人' || rank === '超人' || rank === '金名人以下') {
+        // セレクトボックスの value に設定した数値をそのまま加算
+        const maxFcBonus = parseInt(document.getElementById('maxFcDifficulty').value) || 0;
+        cost += maxFcBonus;
+    }
+
+    document.getElementById('result').textContent = cost;
+}
+
+// ページ読み込み時にフォームを初期化
+updateFields();
+</script>
+
+</body>
+</html>
