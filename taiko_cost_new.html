@@ -61,13 +61,13 @@ function getRankScore(rank, release) {
         case "達人": score = 24; break;
         case "金超人": score = 16; break;
         case "超人": score = 12; break;
-        case "金名人": score = 6; break;
-        case "名人": score = 4; break;
-        case "金玄人以下": score = 2; break;
+        case "金名人": score = 8; break;
+        case "名人": score = 6; break;
+        case "金玄人以下": score = 4; break;
         default: score = 0;
     }
     // 時期による減算（金達人と金名人は減算しない）
-    if(rank !== "金達人" && rank !== "金名人") {
+    if(rank !== "金達人) {
         if(release === "2024以前") score -= 2; 
     }
     return score;
