@@ -59,15 +59,15 @@ function getRankScore(rank, release) {
     switch(rank) {
         case "金達人": score = 30; break;
         case "達人": score = 24; break;
-        case "金超人": score = 16; break;
+        case "金超人": score = 17; break;
         case "超人": score = 12; break;
         case "金名人": score = 8; break;
-        case "名人": score = 6; break;
-        case "金玄人以下": score = 4; break;
+        case "名人": score = 5; break;
+        case "金玄人以下": score = 3; break;
         default: score = 0;
     }
-    // 時期による減算（金達人と金名人は減算しない）
-    if(rank !== "金達人) {
+    // 時期による減算（金達人のみ減算しない）
+    if(rank !== "金達人") {
         if(release === "2024以前") score -= 2; 
     }
     return score;
@@ -79,8 +79,8 @@ function updateFields() {
     const releaseContainer = document.getElementById('releaseContainer');
     const container = document.getElementById('inputFields');
 
-    // 金達人と金名人は取得時期を隠す
-    if(rank === '金達人' || rank === '金名人') {
+    // 金達人のみ取得時期を隠す
+    if(rank === '金達人') {
         releaseContainer.style.display = 'none';
     } else {
         releaseContainer.style.display = 'block';
@@ -130,7 +130,8 @@ function updateFields() {
             <label>★10全良の最高難易度:</label>
             <select id="maxFcDifficulty">
                 <option value="0">なし</option>
-                <option value="6">S+以上</option>
+                <option value="7">SS</option>
+                <option value="6">S+</option>
                 <option value="5">S</option>
                 <option value="4">A+</option>
                 <option value="3">A</option>
