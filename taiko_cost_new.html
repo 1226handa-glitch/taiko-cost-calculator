@@ -66,8 +66,8 @@ function getRankScore(rank, release) {
         case "金玄人以下": score = 2; break;
         default: score = 0;
     }
-    // 時期による減算（金達人と金名人以下の3つは減算しない）
-    if(rank !== "金達人" && rank !== "金名人" && rank !== "名人" && rank !== "金玄人以下") {
+    // 時期による減算（金達人と金名人は減算しない）
+    if(rank !== "金達人" && rank !== "金名人") {
         if(release === "2024以前") score -= 2; 
     }
     return score;
@@ -79,8 +79,8 @@ function updateFields() {
     const releaseContainer = document.getElementById('releaseContainer');
     const container = document.getElementById('inputFields');
 
-    // 金達人と金名人以下の3つは取得時期を隠す
-    if(rank === '金達人' || rank === '金名人' || rank === '名人' || rank === '金玄人以下') {
+    // 金達人と金名人は取得時期を隠す
+    if(rank === '金達人' || rank === '金名人') {
         releaseContainer.style.display = 'none';
     } else {
         releaseContainer.style.display = 'block';
