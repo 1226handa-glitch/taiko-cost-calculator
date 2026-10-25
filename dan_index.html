@@ -11,7 +11,6 @@
         .badge-1st { background-color: #a4d975; border: 2px solid #82bf50; color: white; text-shadow: 1px 1px 0px #70a642, -1px -1px 0px #70a642, 1px -1px 0px #70a642, -1px 1px 0px #70a642; }
         .badge-2nd { background-color: #79c6d9; border: 2px solid #55a8bd; color: white; text-shadow: 1px 1px 0px #4792a6, -1px -1px 0px #4792a6, 1px -1px 0px #4792a6, -1px 1px 0px #4792a6; }
         .badge-3rd { background-color: #f18c8d; border: 2px solid #d96869; color: white; text-shadow: 1px 1px 0px #c25354, -1px -1px 0px #c25354, 1px -1px 0px #c25354, -1px 1px 0px #c25354; }
-        .demon-icon { fill: #e6007e; stroke: #333; stroke-width: 2.5; stroke-linejoin: round; }
         details { box-sizing: border-box; }
         details > summary { list-style: none; cursor: pointer; }
         details > summary::-webkit-details-marker { display: none; }
@@ -169,20 +168,11 @@
         let songsHTML = '';
         data.songs.forEach((song, idx) => {
             const isUra = song.ura;
-            // nameの後に(裏)を追加
             const displayName = isUra ? `${song.name}(裏)` : song.name;
-            
-            // 星表示を消したため、アイコン周りの余白（-mt-1など）を調整
-            const iconHTML = isUra
-                ? `<div class="w-7 h-7 bg-[#1a202c] rounded-full flex items-center justify-center border-2 border-gray-800"><span class="text-[#63b3ed] text-[11px] font-black tracking-tighter">裏</span></div>`
-                : `<svg viewBox="0 0 32 32" class="w-7 h-7"><path class="demon-icon" d="M6 30 L6 16 L2 4 L16 10 L30 4 L26 16 L26 30 Z" /><circle cx="12" cy="18" r="2" fill="#333"/><circle cx="20" cy="18" r="2" fill="#333"/></svg>`;
 
             songsHTML += `
                 <div class="bg-white rounded-full py-2.5 px-3 flex items-center shadow-sm border border-gray-100">
-                    <div class="w-9 h-9 rounded-full ${badges[idx]} flex items-center justify-center font-black text-[13px] mr-2 shrink-0">${labels[idx]}</div>
-                    <div class="flex items-center justify-center mr-3 shrink-0">
-                        ${iconHTML}
-                    </div>
+                    <div class="w-9 h-9 rounded-full ${badges[idx]} flex items-center justify-center font-black text-[13px] mr-3 shrink-0">${labels[idx]}</div>
                     <div class="font-bold text-[15px] text-gray-900 truncate">${displayName}</div>
                 </div>
             `;
