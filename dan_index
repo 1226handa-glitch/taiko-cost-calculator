@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>リズムゲーム お題カード集</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700;900&display=swap');
+
+        body {
+            font-family: 'M PLUS Rounded 1c', sans-serif;
+            background-color: #e8dcc4; /* 全体の背景（木目調の代わり） */
+            margin: 0;
+            padding: 20px 10px;
+        }
+
+        /* 順位バッジのカスタムスタイル（テキストシャドウによるフチドリ） */
+        .badge-1st {
+            background-color: #a4d975;
+            border: 2px solid #82bf50;
+            color: white;
+            text-shadow: 1px 1px 0px #70a642, -1px -1px 0px #70a642, 1px -1px 0px #70a642, -1px 1px 0px #70a642;
+        }
+        .badge-2nd {
+            background-color: #79c6d9;
+            border: 2px solid #55a8bd;
+            color: white;
+            text-shadow: 1px 1px 0px #4792a6, -1px -1px 0px #4792a6, 1px -1px 0px #4792a6, -1px 1px 0px #4792a6;
+        }
+        .badge-3rd {
+            background-color: #f18c8d;
+            border: 2px solid #d96869;
+            color: white;
+            text-shadow: 1px 1px 0px #c25354, -1px -1px 0px #c25354, 1px -1px 0px #c25354, -1px 1px 0px #c25354;
+        }
+
+        /* 鬼アイコンのプレースホルダー用 */
+        .demon-icon {
+            fill: #e6007e;
+            stroke: #333;
+            stroke-width: 2.5;
+            stroke-linejoin: round;
+        }
+
+        /* Details & Summary (アコーディオン) のカスタマイズ */
+        details {
+            /* 開閉時のカクつきを抑えるためのベース設定 */
+            box-sizing: border-box;
+        }
+        details > summary {
+            list-style: none; /* デフォルトの矢印を消す */
+            cursor: pointer;
+        }
+        details > summary::-webkit-details-marker {
+            display: none; /* Safari用のデフォルト矢印を消す */
+        }
+        
+        /* 開いたときにSVGの矢印を回転させる */
+        details[open] summary .chevron-icon {
+            transform: rotate(180deg);
+        }
+
+        /* 開いたときの中身のアニメーション */
+        details[open] .details-content {
+            animation: fadeInDown 0.3s ease-in-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center space-y-6">
+
+    <!-- ==========================================
+         カード1: 烈伝！ドンだー！日本一決定戦 2013
+         ========================================== -->
+    <details class="w-full max-w-[400px] bg-[#fcf6e3] shadow-xl border-2 border-[#176043] rounded-sm group" open>
+        
+        <!-- ヘッダー (Summary) -->
+        <summary class="bg-[#176043] text-white p-3 flex justify-between items-center border-b-4 border-[#0c4029] select-none hover:bg-[#134d35] transition-colors">
+            <h1 class="text-[15px] font-bold tracking-wide">烈伝！ドンだー！日本一決定戦 2013</h1>
+            <!-- 開閉用 矢印アイコン -->
+            <svg class="w-5 h-5 transition-transform duration-300 chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path>
+            </svg>
+        </summary>
+
+        <!-- アコーディオンの展開コンテンツ -->
+        <div class="p-4 pb-6 details-content">
+            
+            <!-- QRコード -->
+            <div class="bg-white p-3 rounded-md shadow-sm w-[160px] mx-auto mt-2 mb-6 border border-gray-200 flex justify-center items-center">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=Donder-Challenge-2013" alt="QR Code" class="w-full h-auto">
+            </div>
+
+            <!-- 楽曲リスト -->
+            <div class="space-y-3 mb-8">
+                <!-- 1曲目 -->
+                <div class="bg-white rounded-full py-2.5 px-3 flex items-center shadow-sm border border-gray-100">
+                    <div class="w-9 h-9 rounded-full badge-1st flex items-center justify-center font-black text-[13px] mr-2 shrink-0">1st</div>
+                    <div class="flex flex-col items-center justify-center mr-3 shrink-0">
+                        <svg viewBox="0 0 32 32" class="w-6 h-6">
+                            <path class="demon-icon" d="M6 30 L6 16 L2 4 L16 10 L30 4 L26 16 L26 30 Z" />
+                            <circle cx="12" cy="18" r="2" fill="#333"/>
+                            <circle cx="20" cy="18" r="2" fill="#333"/>
+                        </svg>
+                        <span class="text-[10px] font-bold text-gray-800 -mt-1">★8</span>
+                    </div>
+                    <div class="font-bold text-[15px] text-gray-900 truncate">愛想笑い</div>
+                </div>
+
+                <!-- 2曲目 -->
+                <div class="bg-white rounded-full py-2.5 px-3 flex items-center shadow-sm border border-gray-100">
+                    <div class="w-9 h-9 rounded-full badge-2nd flex items-center justify-center font-black text-[13px] mr-2 shrink-0">2nd</div>
+                    <div class="flex flex-col items-center justify-center mr-3 shrink-0">
+                        <svg viewBox="0 0 32 32" class="w-6 h-6">
+                            <path class="demon-icon" d="M6 30 L6 16 L2 4 L16 10 L30 4 L26 16 L26 30 Z" />
+                            <circle cx="12" cy="18" r="2" fill="#333"/>
+                            <circle cx="20" cy="18" r="2" fill="#333"/>
+                        </svg>
+                        <span class="text-[10px] font-bold text-gray-800 -mt-1">★9</span>
+                    </div>
+                    <div class="font-bold text-[15px] text-gray-900 truncate">夜桜ブレヰダアズ</div>
+                </div>
+
+                <!-- 3曲目 -->
+                <div class="bg-white rounded-full py-2.5 px-3 flex items-center shadow-sm border border-gray-100">
+                    <div class="w-9 h-9 rounded-full badge-3rd flex items-center justify-center font-black text-[13px] mr-2 shrink-0">3rd</div>
+                    <div class="flex flex-col items-center justify-center mr-3 shrink-0">
+                        <svg viewBox="0 0 32 32" class="w-6 h-6">
+                            <path class="demon-icon" d="M6 30 L6 16 L2 4 L16 10 L30 4 L26 16 L26 30 Z" />
+                            <circle cx="12" cy="18" r="2" fill="#333"/>
+                            <circle cx="20" cy="18" r="2" fill="#333"/>
+                        </svg>
+                        <span class="text-[10px] font-bold text-gray-800 -mt-1">★10</span>
+                    </div>
+                    <div class="font-bold text-[15px] text-gray-900 truncate">D's Adventure Note</div>
+                </div>
+            </div>
+
+            <!-- お題情報 -->
+            <div class="border-[2.5px] border-[#5b4636] rounded-lg relative pt-7 pb-4 px-4 mb-6 bg-[#fcf6e3]">
+                <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-[#5b4636] text-white px-8 py-1.5 rounded-full text-[14px] font-bold tracking-wider">
+                    お題情報
+                </div>
+                
+                <div class="bg-[#f2d7b6] text-[#5b4636] font-bold text-[13px] px-3 py-1.5 rounded-sm mb-1.5">魂ゲージ</div>
+                <div class="bg-white text-gray-800 text-[15px] px-3 py-2 rounded-sm mb-4 font-bold shadow-sm">99%以上</div>
+                
+                <div class="bg-[#f2d7b6] text-[#5b4636] font-bold text-[13px] px-3 py-1.5 rounded-sm mb-1.5">叩けた数</div>
+                <div class="bg-white text-gray-800 text-[15px] px-3 py-2 rounded-sm mb-4 font-bold shadow-sm">2013打以上</div>
+
+                <div class="bg-[#f2d7b6] text-[#5b4636] font-bold text-[13px] px-3 py-1.5 rounded-sm mb-1.5">スコア</div>
+                <div class="bg-white text-gray-800 text-[15px] p-3 rounded-sm font-bold flex flex-col space-y-2.5 shadow-sm">
+                    <div class="flex items-center">
+                        <span class="w-6 h-6 rounded-full badge-1st flex items-center justify-center text-[10px] mr-3">1st</span>
+                        960000点以上
+                    </div>
+                    <div class="flex items-center">
+                        <span class="w-6 h-6 rounded-full badge-2nd flex items-center justify-center text-[10px] mr-3">2nd</span>
+                        950000点以上
+                    </div>
+                    <div class="flex items-center">
+                        <span class="w-6 h-6 rounded-full badge-3rd flex items-center justify-center text-[10px] mr-3">3rd</span>
+                        940000点以上
+                    </div>
+                </div>
+            </div>
+
+            <!-- 下部情報 -->
+            <div class="mb-4">
+                <div class="bg-[#5b4636] text-white font-bold text-[13px] px-3 py-1.5 rounded-t-sm">難易度</div>
+                <div class="bg-white text-gray-800 text-[15px] px-3 py-2 rounded-b-sm font-bold shadow-sm">八〜九段相当</div>
+            </div>
+            <div>
+                <div class="bg-[#5b4636] text-white font-bold text-[13px] px-3 py-1.5 rounded-t-sm">補足説明</div>
+                <div class="bg-white text-gray-800 text-[13px] leading-relaxed px-3 py-3 rounded-b-sm font-medium shadow-sm">
+                    当時の大会「ドンだー！日本一決定戦 2013」を彩ったアツい課題曲を使ったお題を作りました！<br>
+                    ドンだー！世界一決定戦2024の店舗予選大会おつカレーライス記念として、挑戦待ってるドン！
+                </div>
+            </div>
+
+        </div>
+    </details>
+
+
+    <!-- ==========================================
+         カード2: すえPからの挑戦状#1
+         ========================================== -->
+    <details class="w-full max-w-[400px] bg-[#fcf6e3] shadow-xl border-2 border-[#176043] rounded-sm group">
+        
+        <!-- ヘッダー (Summary) -->
+        <summary class="bg-[#176043] text-white p-3 flex justify-between items-center border-b-4 border-[#0c4029] select-none hover:bg-[#134d35] transition-colors">
+            <h1 class="text-[15px] font-bold tracking-wide">すえPからの挑戦状#1</h1>
+            <!-- 開閉用 矢印アイコン -->
+            <svg class="w-5 h-5 transition-transform duration-300 chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path>
+            </svg>
+        </summary>
+
+        <!-- アコーディオンの展開コンテンツ -->
+        <div class="p-4 pb-6 details-content">
+            
+            <!-- QRコード -->
+            <div class="bg-white p-3 rounded-md shadow-sm w-[160px] mx-auto mt-2 mb-6 border border-gray-200 flex justify-center items-center">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=SueP-Challenge-1" alt="QR Code" class="w-full h-auto">
+            </div>
+
+            <!-- 楽曲リスト -->
+            <div class="space-y-3 mb-8">
+                <!-- 1曲目 (裏譜面) -->
+                <div class="bg-white rounded-full py-2.5 px-3 flex items-center shadow-sm border border-gray-100">
+                    <div class="w-9 h-9 rounded-full badge-1st flex items-center justify-center font-black text-[13px] mr-2 shrink-0">1st</div>
+                    <div class="flex flex-col items-center justify-center mr-3 shrink-0 relative">
+                        <!-- 裏譜面用の黒いアイコン -->
+                        <div class="w-6 h-6 bg-[#1a202c] rounded-full flex items-center justify-center border-2 border-gray-800 mb-[2px]">
+                            <span class="text-[#63b3ed] text-[10px] font-black tracking-tighter">裏</span>
+                        </div>
+                        <span class="text-[10px] font-bold text-gray-800">★9</span>
+                    </div>
+                    <div class="font-bold text-[15px] text-gray-900 truncate">God knows...</div>
+                </div>
+
+                <!-- 2曲目 -->
+                <div class="bg-white rounded-full py-2.5 px-3 flex items-center shadow-sm border border-gray-100">
+                    <div class="w-9 h-9 rounded-full badge-2nd flex items-center justify-center font-black text-[13px] mr-2 shrink-0">2nd</div>
+                    <div class="flex flex-col items-center justify-center mr-3 shrink-0">
+                        <svg viewBox="0 0 32 32" class="w-6 h-6">
+                            <path class="demon-icon" d="M6 30 L6 16 L2 4 L16 10 L30 4 L26 16 L26 30 Z" />
+                            <circle cx="12" cy="18" r="2" fill="#333"/>
+                            <circle cx="20" cy="18" r="2" fill="#333"/>
+                        </svg>
+                        <span class="text-[10px] font-bold text-gray-800 -mt-1">★9</span>
+                    </div>
+                    <div class="font-bold text-[15px] text-gray-900 truncate">いっそこのままで</div>
+                </div>
+
+                <!-- 3曲目 -->
+                <div class="bg-white rounded-full py-2.5 px-3 flex items-center shadow-sm border border-gray-100">
+                    <div class="w-9 h-9 rounded-full badge-3rd flex items-center justify-center font-black text-[13px] mr-2 shrink-0">3rd</div>
+                    <div class="flex flex-col items-center justify-center mr-3 shrink-0">
+                        <svg viewBox="0 0 32 32" class="w-6 h-6">
+                            <path class="demon-icon" d="M6 30 L6 16 L2 4 L16 10 L30 4 L26 16 L26 30 Z" />
+                            <circle cx="12" cy="18" r="2" fill="#333"/>
+                            <circle cx="20" cy="18" r="2" fill="#333"/>
+                        </svg>
+                        <span class="text-[10px] font-bold text-gray-800 -mt-1">★9</span>
+                    </div>
+                    <div class="font-bold text-[15px] text-gray-900 truncate">シンクロニカ・エアライン</div>
+                </div>
+            </div>
+
+            <!-- お題情報 -->
+            <div class="border-[2.5px] border-[#5b4636] rounded-lg relative pt-7 pb-4 px-4 mb-6 bg-[#fcf6e3]">
+                <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-[#5b4636] text-white px-8 py-1.5 rounded-full text-[14px] font-bold tracking-wider">
+                    お題情報
+                </div>
+                
+                <div class="bg-[#f2d7b6] text-[#5b4636] font-bold text-[13px] px-3 py-1.5 rounded-sm mb-1.5">魂ゲージ</div>
+                <div class="bg-white text-gray-800 text-[15px] px-3 py-2 rounded-sm mb-4 font-bold shadow-sm">100%</div>
+                
+                <div class="bg-[#f2d7b6] text-[#5b4636] font-bold text-[13px] px-3 py-1.5 rounded-sm mb-1.5">可の数</div>
+                <div class="bg-white text-gray-800 text-[15px] p-3 rounded-sm mb-4 font-bold flex flex-col space-y-2.5 shadow-sm">
+                    <div class="flex items-center">
+                        <span class="w-6 h-6 rounded-full badge-1st flex items-center justify-center text-[10px] mr-3">1st</span>
+                        78未満
+                    </div>
+                    <div class="flex items-center">
+                        <span class="w-6 h-6 rounded-full badge-2nd flex items-center justify-center text-[10px] mr-3">2nd</span>
+                        73未満
+                    </div>
+                    <div class="flex items-center">
+                        <span class="w-6 h-6 rounded-full badge-3rd flex items-center justify-center text-[10px] mr-3">3rd</span>
+                        94未満
+                    </div>
+                </div>
+
+                <div class="bg-[#f2d7b6] text-[#5b4636] font-bold text-[13px] px-3 py-1.5 rounded-sm mb-1.5">不可の数</div>
+                <div class="bg-white text-gray-800 text-[15px] p-3 rounded-sm mb-4 font-bold flex flex-col space-y-2.5 shadow-sm">
+                    <div class="flex items-center">
+                        <span class="w-6 h-6 rounded-full badge-1st flex items-center justify-center text-[10px] mr-3">1st</span>
+                        12未満
+                    </div>
+                    <div class="flex items-center">
+                        <span class="w-6 h-6 rounded-full badge-2nd flex items-center justify-center text-[10px] mr-3">2nd</span>
+                        11未満
+                    </div>
+                    <div class="flex items-center">
+                        <span class="w-6 h-6 rounded-full badge-3rd flex items-center justify-center text-[10px] mr-3">3rd</span>
+                        15未満
+                    </div>
+                </div>
+
+                <div class="bg-[#f2d7b6] text-[#5b4636] font-bold text-[13px] px-3 py-1.5 rounded-sm mb-1.5">連打数</div>
+                <div class="bg-white text-gray-800 text-[15px] p-3 rounded-sm font-bold flex flex-col space-y-2.5 shadow-sm">
+                    <div class="flex items-center">
+                        <span class="w-6 h-6 rounded-full badge-1st flex items-center justify-center text-[10px] mr-3">1st</span>
+                        310打以上
+                    </div>
+                    <div class="flex items-center">
+                        <span class="w-6 h-6 rounded-full badge-2nd flex items-center justify-center text-[10px] mr-3">2nd</span>
+                        32打以上
+                    </div>
+                    <div class="flex items-center">
+                        <span class="w-6 h-6 rounded-full badge-3rd flex items-center justify-center text-[10px] mr-3">3rd</span>
+                        171打以上
+                    </div>
+                </div>
+            </div>
+
+            <!-- 下部情報 -->
+            <div class="mb-4">
+                <div class="bg-[#5b4636] text-white font-bold text-[13px] px-3 py-1.5 rounded-t-sm">難易度</div>
+                <div class="bg-white text-gray-800 text-[15px] px-3 py-2 rounded-b-sm font-bold shadow-sm">八〜九段相当</div>
+            </div>
+            <div>
+                <div class="bg-[#5b4636] text-white font-bold text-[13px] px-3 py-1.5 rounded-t-sm">補足説明</div>
+                <div class="bg-white text-gray-800 text-[13px] leading-relaxed px-3 py-3 rounded-b-sm font-medium shadow-sm">
+                    譜面ジャーのすえPが譜面を担当した曲だけでお題を考えたよ！合格条件は、すえP本人の成績を越えること！<br><br>
+                    すえP「赤合格の目標値をでたらめプレイで出した成績、金合格の目標値を通常プレイで頑張って出した成績を設定しました！ぜひ挑戦してみてください！」
+                </div>
+            </div>
+
+        </div>
+    </details>
+
+</body>
+</html>
