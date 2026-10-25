@@ -43,121 +43,202 @@
     </div>
 
     <script>
-    const defaultConditions = [
-        { label: "魂ゲージ", type: "single", value: "---" },
-        { label: "スコア", type: "multi", values: ["---", "---", "---"] }
-    ];
-
     const cardData = [
         // ================= 候補① =================
         {
             category: 1, title: "烈伝！ドンだ～！日本一決定戦 2011", qrData: "Placeholder-2011", isOpen: false,
             songs: [{ name: "宇宙SAMURAI", ura: false }, { name: "天妖の舞", ura: false }, { name: "Black Rose Apostle", ura: false }],
-            conditions: defaultConditions
+            conditions: [
+                { label: "魂ゲージ", type: "single", value: "99％以上" },
+                { label: "叩けた数", type: "single", value: "2011打以上" },
+                { label: "スコア", type: "multi", values: ["950000点以上", "940000点以上", "930000点以上"] }
+            ]
         },
         {
-            category: 1, title: "烈伝！ドンだー！日本一決定戦 2013", qrData: "Donder-Challenge-2013", isOpen: true,
+            category: 1, title: "烈伝！ドンだー！日本一決定戦 2013", qrData: "Donder-Challenge-2013", isOpen: false,
             songs: [{ name: "愛想笑い", ura: false }, { name: "夜櫻ブレヰダアズ", ura: false }, { name: "D's Adventure Note", ura: false }],
-            conditions: [{ label: "魂ゲージ", type: "single", value: "99%以上" }, { label: "叩けた数", type: "single", value: "2013打以上" }, { label: "スコア", type: "multi", values: ["960000点以上", "950000点以上", "940000点以上"] }]
+            conditions: [
+                { label: "魂ゲージ", type: "single", value: "99%以上" },
+                { label: "叩けた数", type: "single", value: "2013打以上" },
+                { label: "スコア", type: "multi", values: ["960000点以上", "950000点以上", "940000点以上"] }
+            ]
         },
         {
             category: 1, title: "ドコドン！ボーカル曲祭り#2", qrData: "Placeholder", isOpen: false,
             songs: [{ name: "ブルちゃんのおや2", ura: false }, { name: "Solitude Star", ura: false }, { name: "EDY -エレクトリカルダンシングヨガ-", ura: false }],
-            conditions: defaultConditions
+            conditions: [
+                { label: "魂ゲージ", type: "single", value: "100％以上" },
+                { label: "叩けた数", type: "single", value: "2551打以上" }
+            ]
         },
         {
             category: 1, title: "すえPからの挑戦状#1", qrData: "SueP-Challenge-1", isOpen: false,
             songs: [{ name: "God knows...", ura: true }, { name: "いっそこのままで", ura: false }, { name: "シンクロニカ・エアライン", ura: false }],
-            conditions: [{ label: "魂ゲージ", type: "single", value: "100%" }, { label: "可の数", type: "multi", values: ["78未満", "73未満", "94未満"] }, { label: "不可の数", type: "multi", values: ["12未満", "11未満", "15未満"] }, { label: "連打数", type: "multi", values: ["310打以上", "32打以上", "171打以上"] }]
+            conditions: [
+                { label: "魂ゲージ", type: "single", value: "100%" },
+                { label: "可の数", type: "multi", values: ["78未満", "73未満", "94未満"] },
+                { label: "不可の数", type: "multi", values: ["12未満", "11未満", "15未満"] },
+                { label: "連打数", type: "multi", values: ["310打以上", "32打以上", "171打以上"] }
+            ]
         },
         {
             category: 1, title: "マスブ・チュジー生誕記念#2022【極】", qrData: "Placeholder", isOpen: false,
             songs: [{ name: "アレキサンダーのテーマ", ura: false }, { name: "Agent Hustle & Dr Hassle", ura: true }, { name: "亜空間遊泳ac12.5", ura: false }],
-            conditions: defaultConditions
+            conditions: [
+                { label: "魂ゲージ", type: "single", value: "98％以上" },
+                { label: "可の数", type: "single", value: "70未満" },
+                { label: "不可の数", type: "single", value: "26未満" },
+                { label: "連打数", type: "multi", values: ["70以上", "20以上", "60以上"] }
+            ]
         },
         {
             category: 1, title: "steμからの挑戦状 #1", qrData: "Placeholder", isOpen: false,
             songs: [{ name: "1・2・さんしのでドンドカッカッ！", ura: false }, { name: "ぺた・PETA！？パンプキン", ura: false }, { name: "うちゅうひこうし冒険譚", ura: false }],
-            conditions: defaultConditions
+            conditions: [
+                { label: "可の数", type: "multi", values: ["30未満", "70未満", "160未満"] },
+                { label: "不可の数", type: "single", value: "25未満" },
+                { label: "連打数", type: "multi", values: ["130打以上", "120打以上", "6打以上"] }
+            ]
         },
         {
             category: 1, title: "太鼓チームからの挑戦状2022 #1", qrData: "Placeholder", isOpen: false,
             songs: [{ name: "画竜点睛", ura: false }, { name: "百花繚乱", ura: false }, { name: "一世風靡", ura: false }],
-            conditions: defaultConditions
+            conditions: [
+                { label: "魂ゲージ", type: "single", value: "99％以上" },
+                { label: "良の数", type: "multi", values: ["466以上", "575以上", "525以上"] },
+                { label: "不可の数", type: "multi", values: ["16未満", "20未満", "18未満"] }
+            ]
         },
 
         // ================= 候補② =================
         {
             category: 2, title: "復活！ムラサキ十段", qrData: "Placeholder", isOpen: false,
             songs: [{ name: "カラ鞠の花", ura: false }, { name: "蒼の旋律", ura: true }, { name: "てんぢく2000", ura: false }],
-            conditions: defaultConditions
+            conditions: [
+                { label: "魂ゲージ", type: "single", value: "100%" },
+                { label: "可の数", type: "single", value: "75未満" },
+                { label: "不可の数", type: "single", value: "15未満" }
+            ]
         },
         {
             category: 2, title: "復活！ホワイト十段", qrData: "Placeholder", isOpen: false,
             songs: [{ name: "X-DAY2000", ura: false }, { name: "カグツチ", ura: false }, { name: "そつおめしき", ura: false }],
-            conditions: defaultConditions
+            conditions: [
+                { label: "魂ゲージ", type: "single", value: "100%" },
+                { label: "可の数", type: "single", value: "75未満" },
+                { label: "不可の数", type: "single", value: "20未満" }
+            ]
         },
         {
             category: 2, title: "復活！レッド十段", qrData: "Placeholder", isOpen: false,
             songs: [{ name: "朱の旋律", ura: false }, { name: "Ignis Danse", ura: false }, { name: "そつおめしき", ura: false }],
-            conditions: defaultConditions
+            conditions: [
+                { label: "魂ゲージ", type: "single", value: "100%" },
+                { label: "可の数", type: "single", value: "50未満" },
+                { label: "不可の数", type: "single", value: "8未満" }
+            ]
         },
         {
             category: 2, title: "復活！イエロー十段", qrData: "Placeholder", isOpen: false,
             songs: [{ name: "D′s Adventure Note", ura: false }, { name: "No Gravity", ura: false }, { name: "そつおめしき2ばん", ura: false }],
-            conditions: defaultConditions
+            conditions: [
+                { label: "魂ゲージ", type: "single", value: "100%以上" },
+                { label: "可の数", type: "single", value: "50未満" },
+                { label: "不可の数", type: "single", value: "7未満" }
+            ]
         },
         {
             category: 2, title: "復活！ブルー十段", qrData: "Placeholder", isOpen: false,
             songs: [{ name: "夜桜謝肉祭", ura: true }, { name: "Pastel Sealane", ura: false }, { name: "トイマチック☆パレード!!", ura: false }],
-            conditions: defaultConditions
+            conditions: [
+                { label: "魂ゲージ", type: "single", value: "100%" },
+                { label: "可の数", type: "single", value: "90未満" },
+                { label: "不可の数", type: "single", value: "8未満" }
+            ]
         },
         {
             category: 2, title: "復活！グリーン十段", qrData: "Placeholder", isOpen: false,
             songs: [{ name: "R.I.", ura: false }, { name: "千鼓千鼓", ura: false }, { name: "デッド・オア・ダイ", ura: false }],
-            conditions: defaultConditions
+            conditions: [
+                { label: "魂ゲージ", type: "single", value: "100%" },
+                { label: "可の数", type: "single", value: "90未満" },
+                { label: "不可の数", type: "single", value: "9未満" }
+            ]
         },
         {
             category: 2, title: "復活！ニジイロ2020十段", qrData: "Placeholder", isOpen: false,
             songs: [{ name: "Surf Zapping", ura: false }, { name: "SORA‐Ⅶ シグナスウォール", ura: false }, { name: "memoria ficta", ura: false }],
-            conditions: defaultConditions
+            conditions: [
+                { label: "魂ゲージ", type: "single", value: "100%" },
+                { label: "不可の数", type: "single", value: "7未満" },
+                { label: "可の数", type: "multi", values: ["88未満", "30未満", "28未満"] },
+                { label: "連打数", type: "multi", values: ["26打以上", "59打以上", "53打以上"] }
+            ]
         },
 
         // ================= 候補③ =================
         {
             category: 3, title: "復活！ソライロ十段", qrData: "Placeholder", isOpen: false,
             songs: [{ name: "Doom Noiz", ura: false }, { name: "燎原ノ舞", ura: false }, { name: "万戈イム－一ノ十", ura: false }],
-            conditions: defaultConditions
+            conditions: [
+                { label: "魂ゲージ", type: "single", value: "100%" },
+                { label: "可の数", type: "single", value: "30未満" },
+                { label: "不可の数", type: "single", value: "10未満" }
+            ]
         },
         {
             category: 3, title: "復活！モモイロ十段", qrData: "Placeholder", isOpen: false,
             songs: [{ name: "ナイトメア・サバイバー", ura: true }, { name: "Angel Halo", ura: false }, { name: "万戈イム－一ノ十", ura: false }],
-            conditions: defaultConditions
+            conditions: [
+                { label: "魂ゲージ", type: "single", value: "100%" },
+                { label: "可の数", type: "single", value: "30未満" },
+                { label: "不可の数", type: "single", value: "10未満" }
+            ]
         },
         {
             category: 3, title: "復活！キミドリ十段", qrData: "Placeholder", isOpen: false,
             songs: [{ name: "Purple Rose Fusion", ura: false }, { name: "DEBSTEP！", ura: false }, { name: "燎原ノ舞", ura: false }],
-            conditions: defaultConditions
+            conditions: [
+                { label: "魂ゲージ", type: "single", value: "100%" },
+                { label: "可の数", type: "single", value: "30未満" },
+                { label: "不可の数", type: "single", value: "10未満" }
+            ]
         },
         {
             category: 3, title: "復活！ムラサキ名人", qrData: "Placeholder", isOpen: false,
             songs: [{ name: "弩蚊怒夏", ura: false }, { name: "はたラク2000", ura: false }, { name: "燎原ノ舞", ura: false }],
-            conditions: defaultConditions
+            conditions: [
+                { label: "魂ゲージ", type: "single", value: "100%" },
+                { label: "可の数", type: "single", value: "25未満" },
+                { label: "不可の数", type: "single", value: "5未満" }
+            ]
         },
         {
             category: 3, title: "復活！レッド名人", qrData: "Placeholder", isOpen: false,
             songs: [{ name: "Got more raves？", ura: true }, { name: "秋竜 ～Shiuryu～", ura: true }, { name: "FLOWER", ura: true }],
-            conditions: defaultConditions
+            conditions: [
+                { label: "魂ゲージ", type: "single", value: "100%" },
+                { label: "可の数", type: "single", value: "20未満" },
+                { label: "不可の数", type: "single", value: "7未満" }
+            ]
         },
         {
             category: 3, title: "復活！ブルー名人", qrData: "Placeholder", isOpen: false,
             songs: [{ name: "ココロボ", ura: false }, { name: "まるくてはやくてすさまじいリズム", ura: false }, { name: "EterNal Ring", ura: false }],
-            conditions: defaultConditions
+            conditions: [
+                { label: "魂ゲージ", type: "single", value: "100%" },
+                { label: "可の数", type: "single", value: "27未満" },
+                { label: "不可の数", type: "single", value: "5未満" }
+            ]
         },
         {
             category: 3, title: "復活！グリーン名人", qrData: "Placeholder", isOpen: false,
             songs: [{ name: "弩蚊怒夏", ura: false }, { name: "愛と浄罪の森", ura: false }, { name: "コネクトカラーズ", ura: false }],
-            conditions: defaultConditions
+            conditions: [
+                { label: "魂ゲージ", type: "single", value: "100%" },
+                { label: "可の数", type: "single", value: "28未満" },
+                { label: "不可の数", type: "single", value: "5未満" }
+            ]
         }
     ];
 
