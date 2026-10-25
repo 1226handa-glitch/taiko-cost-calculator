@@ -88,13 +88,14 @@
                 { label: "魂ゲージ", type: "single", value: "98％以上" },
                 { label: "可の数", type: "single", value: "70未満" },
                 { label: "不可の数", type: "single", value: "26未満" },
-                { label: "連打数", type: "multi", values: ["70以上", "20以上", "60以上"] }
+                { label: "連打数", type: "multi", values: ["70打以上", "20打以上", "60打以上"] } // ← 変更箇所
             ]
         },
         {
             category: 1, title: "steμからの挑戦状 #1", qrData: "Placeholder", isOpen: false,
             songs: [{ name: "1・2・さんしのでドンドカッカッ！", ura: false }, { name: "ぺた・PETA！？パンプキン", ura: false }, { name: "うちゅうひこうし冒険譚", ura: false }],
             conditions: [
+                { label: "魂ゲージ", type: "single", value: "98％以上" }, // ← 変更箇所（追加）
                 { label: "可の数", type: "multi", values: ["30未満", "70未満", "160未満"] },
                 { label: "不可の数", type: "single", value: "25未満" },
                 { label: "連打数", type: "multi", values: ["130打以上", "120打以上", "6打以上"] }
@@ -170,8 +171,8 @@
             songs: [{ name: "Surf Zapping", ura: false }, { name: "SORA‐Ⅶ シグナスウォール", ura: false }, { name: "memoria ficta", ura: false }],
             conditions: [
                 { label: "魂ゲージ", type: "single", value: "100%" },
-                { label: "不可の数", type: "single", value: "7未満" },
-                { label: "可の数", type: "multi", values: ["88未満", "30未満", "28未満"] },
+                { label: "可の数", type: "multi", values: ["30未満", "30未満", "28未満"] }, // ← 変更箇所
+                { label: "不可の数", type: "single", value: "7未満" }, // ← 変更箇所
                 { label: "連打数", type: "multi", values: ["26打以上", "59打以上", "53打以上"] }
             ]
         },
