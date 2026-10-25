@@ -24,7 +24,24 @@
     </style>
 </head>
 <body>
-    <div id="cards-container" class="w-full flex flex-col items-center space-y-6 pb-10"></div>
+
+    <!-- 候補①のコンテナ -->
+    <div class="w-full max-w-[400px] mx-auto mb-12">
+        <h2 class="text-xl font-black text-[#5b4636] border-b-4 border-[#5b4636] pb-2 mb-5 pl-2">候補①</h2>
+        <div id="cards-container-1" class="flex flex-col items-center space-y-6"></div>
+    </div>
+
+    <!-- 候補②のコンテナ -->
+    <div class="w-full max-w-[400px] mx-auto mb-12">
+        <h2 class="text-xl font-black text-[#5b4636] border-b-4 border-[#5b4636] pb-2 mb-5 pl-2">候補②</h2>
+        <div id="cards-container-2" class="flex flex-col items-center space-y-6"></div>
+    </div>
+
+    <!-- 候補③のコンテナ -->
+    <div class="w-full max-w-[400px] mx-auto mb-12">
+        <h2 class="text-xl font-black text-[#5b4636] border-b-4 border-[#5b4636] pb-2 mb-5 pl-2">候補③</h2>
+        <div id="cards-container-3" class="flex flex-col items-center space-y-6"></div>
+    </div>
 
     <script>
     const defaultConditions = [
@@ -33,253 +50,118 @@
     ];
 
     const cardData = [
+        // ================= 候補① =================
         {
-            title: "烈伝！ドンだ～！日本一決定戦 2011",
-            qrData: "Placeholder-2011",
-            isOpen: false,
-            songs: [
-                { name: "宇宙SAMURAI", star: "?", ura: false },
-                { name: "天妖の舞", star: "?", ura: false },
-                { name: "Black Rose Apostle", star: "?", ura: false }
-            ],
-            conditions: defaultConditions, level: "---", desc: "QRコード・お題情報は準備中です。"
+            category: 1, title: "烈伝！ドンだ～！日本一決定戦 2011", qrData: "Placeholder-2011", isOpen: false,
+            songs: [{ name: "宇宙SAMURAI", ura: false }, { name: "天妖の舞", ura: false }, { name: "Black Rose Apostle", ura: false }],
+            conditions: defaultConditions
         },
         {
-            title: "復活！ムラサキ十段",
-            qrData: "Placeholder",
-            isOpen: false,
-            songs: [
-                { name: "カラ鞠の花", star: "?", ura: false },
-                { name: "蒼の旋律", star: "?", ura: true },
-                { name: "てんぢく2000", star: "?", ura: false }
-            ],
-            conditions: defaultConditions, level: "---", desc: "QRコード・お題情報は準備中です。"
+            category: 1, title: "烈伝！ドンだー！日本一決定戦 2013", qrData: "Donder-Challenge-2013", isOpen: true,
+            songs: [{ name: "愛想笑い", ura: false }, { name: "夜櫻ブレヰダアズ", ura: false }, { name: "D's Adventure Note", ura: false }],
+            conditions: [{ label: "魂ゲージ", type: "single", value: "99%以上" }, { label: "叩けた数", type: "single", value: "2013打以上" }, { label: "スコア", type: "multi", values: ["960000点以上", "950000点以上", "940000点以上"] }]
         },
         {
-            title: "復活！ソライロ十段",
-            qrData: "Placeholder",
-            isOpen: false,
-            songs: [
-                { name: "Doom Noiz", star: "?", ura: false },
-                { name: "燎原ノ舞", star: "?", ura: false },
-                { name: "万戈イム－一ノ十", star: "?", ura: false }
-            ],
-            conditions: defaultConditions, level: "---", desc: "QRコード・お題情報は準備中です。"
+            category: 1, title: "ドコドン！ボーカル曲祭り#2", qrData: "Placeholder", isOpen: false,
+            songs: [{ name: "ブルちゃんのおや2", ura: false }, { name: "Solitude Star", ura: false }, { name: "EDY -エレクトリカルダンシングヨガ-", ura: false }],
+            conditions: defaultConditions
         },
         {
-            title: "烈伝！ドンだー！日本一決定戦 2013",
-            qrData: "Donder-Challenge-2013",
-            isOpen: true,
-            songs: [
-                { name: "愛想笑い", star: "8", ura: false },
-                { name: "夜櫻ブレヰダアズ", star: "9", ura: false },
-                { name: "D's Adventure Note", star: "10", ura: false }
-            ],
-            conditions: [
-                { label: "魂ゲージ", type: "single", value: "99%以上" },
-                { label: "叩けた数", type: "single", value: "2013打以上" },
-                { label: "スコア", type: "multi", values: ["960000点以上", "950000点以上", "940000点以上"] }
-            ],
-            level: "八〜九段相当",
-            desc: "当時の大会「ドンだー！日本一決定戦 2013」を彩ったアツい課題曲を使ったお題を作りました！<br>ドンだー！世界一決定戦2024の店舗予選大会おつカレーライス記念として、挑戦待ってるドン！"
+            category: 1, title: "すえPからの挑戦状#1", qrData: "SueP-Challenge-1", isOpen: false,
+            songs: [{ name: "God knows...", ura: true }, { name: "いっそこのままで", ura: false }, { name: "シンクロニカ・エアライン", ura: false }],
+            conditions: [{ label: "魂ゲージ", type: "single", value: "100%" }, { label: "可の数", type: "multi", values: ["78未満", "73未満", "94未満"] }, { label: "不可の数", type: "multi", values: ["12未満", "11未満", "15未満"] }, { label: "連打数", type: "multi", values: ["310打以上", "32打以上", "171打以上"] }]
         },
         {
-            title: "復活！ホワイト十段",
-            qrData: "Placeholder",
-            isOpen: false,
-            songs: [
-                { name: "X-DAY2000", star: "?", ura: false },
-                { name: "カグツチ", star: "?", ura: false },
-                { name: "そつおめしき", star: "?", ura: false }
-            ],
-            conditions: defaultConditions, level: "---", desc: "QRコード・お題情報は準備中です。"
+            category: 1, title: "マスブ・チュジー生誕記念#2022【極】", qrData: "Placeholder", isOpen: false,
+            songs: [{ name: "アレキサンダーのテーマ", ura: false }, { name: "Agent Hustle & Dr Hassle", ura: true }, { name: "亜空間遊泳ac12.5", ura: false }],
+            conditions: defaultConditions
         },
         {
-            title: "復活！モモイロ十段",
-            qrData: "Placeholder",
-            isOpen: false,
-            songs: [
-                { name: "ナイトメア・サバイバー", star: "?", ura: true },
-                { name: "Angel Halo", star: "?", ura: false },
-                { name: "万戈イム－一ノ十", star: "?", ura: false }
-            ],
-            conditions: defaultConditions, level: "---", desc: "QRコード・お題情報は準備中です。"
+            category: 1, title: "steμからの挑戦状 #1", qrData: "Placeholder", isOpen: false,
+            songs: [{ name: "1・2・さんしのでドンドカッカッ！", ura: false }, { name: "ぺた・PETA！？パンプキン", ura: false }, { name: "うちゅうひこうし冒険譚", ura: false }],
+            conditions: defaultConditions
         },
         {
-            title: "ドコドン！ボーカル曲祭り#2",
-            qrData: "Placeholder",
-            isOpen: false,
-            songs: [
-                { name: "ブルちゃんのおや2", star: "?", ura: false },
-                { name: "Solitude Star", star: "?", ura: false },
-                { name: "EDY -エレクトリカルダンシングヨガ-", star: "?", ura: false }
-            ],
-            conditions: defaultConditions, level: "---", desc: "QRコード・お題情報は準備中です。"
+            category: 1, title: "太鼓チームからの挑戦状2022 #1", qrData: "Placeholder", isOpen: false,
+            songs: [{ name: "画竜点睛", ura: false }, { name: "百花繚乱", ura: false }, { name: "一世風靡", ura: false }],
+            conditions: defaultConditions
+        },
+
+        // ================= 候補② =================
+        {
+            category: 2, title: "復活！ムラサキ十段", qrData: "Placeholder", isOpen: false,
+            songs: [{ name: "カラ鞠の花", ura: false }, { name: "蒼の旋律", ura: true }, { name: "てんぢく2000", ura: false }],
+            conditions: defaultConditions
         },
         {
-            title: "復活！レッド十段",
-            qrData: "Placeholder",
-            isOpen: false,
-            songs: [
-                { name: "朱の旋律", star: "?", ura: false },
-                { name: "Ignis Danse", star: "?", ura: false },
-                { name: "そつおめしき", star: "?", ura: false }
-            ],
-            conditions: defaultConditions, level: "---", desc: "QRコード・お題情報は準備中です。"
+            category: 2, title: "復活！ホワイト十段", qrData: "Placeholder", isOpen: false,
+            songs: [{ name: "X-DAY2000", ura: false }, { name: "カグツチ", ura: false }, { name: "そつおめしき", ura: false }],
+            conditions: defaultConditions
         },
         {
-            title: "復活！キミドリ十段",
-            qrData: "Placeholder",
-            isOpen: false,
-            songs: [
-                { name: "Purple Rose Fusion", star: "?", ura: false },
-                { name: "DEBSTEP！", star: "?", ura: false },
-                { name: "燎原ノ舞", star: "?", ura: false }
-            ],
-            conditions: defaultConditions, level: "---", desc: "QRコード・お題情報は準備中です。"
+            category: 2, title: "復活！レッド十段", qrData: "Placeholder", isOpen: false,
+            songs: [{ name: "朱の旋律", ura: false }, { name: "Ignis Danse", ura: false }, { name: "そつおめしき", ura: false }],
+            conditions: defaultConditions
         },
         {
-            title: "すえPからの挑戦状#1",
-            qrData: "SueP-Challenge-1",
-            isOpen: false,
-            songs: [
-                { name: "God knows...", star: "9", ura: true },
-                { name: "いっそこのままで", star: "9", ura: false },
-                { name: "シンクロニカ・エアライン", star: "9", ura: false }
-            ],
-            conditions: [
-                { label: "魂ゲージ", type: "single", value: "100%" },
-                { label: "可の数", type: "multi", values: ["78未満", "73未満", "94未満"] },
-                { label: "不可の数", type: "multi", values: ["12未満", "11未満", "15未満"] },
-                { label: "連打数", type: "multi", values: ["310打以上", "32打以上", "171打以上"] }
-            ],
-            level: "八〜九段相当",
-            desc: "譜面ジャーのすえPが譜面を担当した曲だけでお題を考えたよ！合格条件は、すえP本人の成績を越えること！<br><br>すえP「赤合格の目標値をでたらめプレイで出した成績、金合格の目標値を通常プレイで頑張って出した成績を設定しました！ぜひ挑戦してみてください！」"
+            category: 2, title: "復活！イエロー十段", qrData: "Placeholder", isOpen: false,
+            songs: [{ name: "D′s Adventure Note", ura: false }, { name: "No Gravity", ura: false }, { name: "そつおめしき2ばん", ura: false }],
+            conditions: defaultConditions
         },
         {
-            title: "復活！イエロー十段",
-            qrData: "Placeholder",
-            isOpen: false,
-            songs: [
-                { name: "D′s Adventure Note", star: "?", ura: false },
-                { name: "No Gravity", star: "?", ura: false },
-                { name: "そつおめしき2ばん", star: "?", ura: false }
-            ],
-            conditions: defaultConditions, level: "---", desc: "QRコード・お題情報は準備中です。"
+            category: 2, title: "復活！ブルー十段", qrData: "Placeholder", isOpen: false,
+            songs: [{ name: "夜桜謝肉祭", ura: true }, { name: "Pastel Sealane", ura: false }, { name: "トイマチック☆パレード!!", ura: false }],
+            conditions: defaultConditions
         },
         {
-            title: "復活！ムラサキ名人",
-            qrData: "Placeholder",
-            isOpen: false,
-            songs: [
-                { name: "弩蚊怒夏", star: "?", ura: false },
-                { name: "はたラク2000", star: "?", ura: false },
-                { name: "燎原ノ舞", star: "?", ura: false }
-            ],
-            conditions: defaultConditions, level: "---", desc: "QRコード・お題情報は準備中です。"
+            category: 2, title: "復活！グリーン十段", qrData: "Placeholder", isOpen: false,
+            songs: [{ name: "R.I.", ura: false }, { name: "千鼓千鼓", ura: false }, { name: "デッド・オア・ダイ", ura: false }],
+            conditions: defaultConditions
         },
         {
-            title: "マスブ・チュジー生誕記念#2022【極】",
-            qrData: "Placeholder",
-            isOpen: false,
-            songs: [
-                { name: "アレキサンダーのテーマ", star: "?", ura: false },
-                { name: "Agent Hustle & Dr Hassle", star: "?", ura: true },
-                { name: "亜空間遊泳ac12.5", star: "?", ura: false }
-            ],
-            conditions: defaultConditions, level: "---", desc: "QRコード・お題情報は準備中です。"
+            category: 2, title: "復活！ニジイロ2020十段", qrData: "Placeholder", isOpen: false,
+            songs: [{ name: "Surf Zapping", ura: false }, { name: "SORA‐Ⅶ シグナスウォール", ura: false }, { name: "memoria ficta", ura: false }],
+            conditions: defaultConditions
+        },
+
+        // ================= 候補③ =================
+        {
+            category: 3, title: "復活！ソライロ十段", qrData: "Placeholder", isOpen: false,
+            songs: [{ name: "Doom Noiz", ura: false }, { name: "燎原ノ舞", ura: false }, { name: "万戈イム－一ノ十", ura: false }],
+            conditions: defaultConditions
         },
         {
-            title: "復活！ブルー十段",
-            qrData: "Placeholder",
-            isOpen: false,
-            songs: [
-                { name: "夜桜謝肉祭", star: "?", ura: true },
-                { name: "Pastel Sealane", star: "?", ura: false },
-                { name: "トイマチック☆パレード!!", star: "?", ura: false }
-            ],
-            conditions: defaultConditions, level: "---", desc: "QRコード・お題情報は準備中です。"
+            category: 3, title: "復活！モモイロ十段", qrData: "Placeholder", isOpen: false,
+            songs: [{ name: "ナイトメア・サバイバー", ura: true }, { name: "Angel Halo", ura: false }, { name: "万戈イム－一ノ十", ura: false }],
+            conditions: defaultConditions
         },
         {
-            title: "復活！レッド名人",
-            qrData: "Placeholder",
-            isOpen: false,
-            songs: [
-                { name: "Got more raves？", star: "?", ura: true },
-                { name: "秋竜 ～Shiuryu～", star: "?", ura: true },
-                { name: "FLOWER", star: "?", ura: true }
-            ],
-            conditions: defaultConditions, level: "---", desc: "QRコード・お題情報は準備中です。"
+            category: 3, title: "復活！キミドリ十段", qrData: "Placeholder", isOpen: false,
+            songs: [{ name: "Purple Rose Fusion", ura: false }, { name: "DEBSTEP！", ura: false }, { name: "燎原ノ舞", ura: false }],
+            conditions: defaultConditions
         },
         {
-            title: "steμからの挑戦状 #1",
-            qrData: "Placeholder",
-            isOpen: false,
-            songs: [
-                { name: "1・2・さんしのでドンドカッカッ！", star: "?", ura: false },
-                { name: "ぺた・PETA！？パンプキン", star: "?", ura: false },
-                { name: "うちゅうひこうし冒険譚", star: "?", ura: false }
-            ],
-            conditions: defaultConditions, level: "---", desc: "QRコード・お題情報は準備中です。"
+            category: 3, title: "復活！ムラサキ名人", qrData: "Placeholder", isOpen: false,
+            songs: [{ name: "弩蚊怒夏", ura: false }, { name: "はたラク2000", ura: false }, { name: "燎原ノ舞", ura: false }],
+            conditions: defaultConditions
         },
         {
-            title: "復活！グリーン十段",
-            qrData: "Placeholder",
-            isOpen: false,
-            songs: [
-                { name: "R.I.", star: "?", ura: false },
-                { name: "千鼓千鼓", star: "?", ura: false },
-                { name: "デッド・オア・ダイ", star: "?", ura: false }
-            ],
-            conditions: defaultConditions, level: "---", desc: "QRコード・お題情報は準備中です。"
+            category: 3, title: "復活！レッド名人", qrData: "Placeholder", isOpen: false,
+            songs: [{ name: "Got more raves？", ura: true }, { name: "秋竜 ～Shiuryu～", ura: true }, { name: "FLOWER", ura: true }],
+            conditions: defaultConditions
         },
         {
-            title: "復活！ブルー名人",
-            qrData: "Placeholder",
-            isOpen: false,
-            songs: [
-                { name: "ココロボ", star: "?", ura: false },
-                { name: "まるくてはやくてすさまじいリズム", star: "?", ura: false },
-                { name: "EterNal Ring", star: "?", ura: false }
-            ],
-            conditions: defaultConditions, level: "---", desc: "QRコード・お題情報は準備中です。"
+            category: 3, title: "復活！ブルー名人", qrData: "Placeholder", isOpen: false,
+            songs: [{ name: "ココロボ", ura: false }, { name: "まるくてはやくてすさまじいリズム", ura: false }, { name: "EterNal Ring", ura: false }],
+            conditions: defaultConditions
         },
         {
-            title: "太鼓チームからの挑戦状2022 #1",
-            qrData: "Placeholder",
-            isOpen: false,
-            songs: [
-                { name: "画竜点睛", star: "?", ura: false },
-                { name: "百花繚乱", star: "?", ura: false },
-                { name: "一世風靡", star: "?", ura: false }
-            ],
-            conditions: defaultConditions, level: "---", desc: "QRコード・お題情報は準備中です。"
-        },
-        {
-            title: "復活！ニジイロ2020十段",
-            qrData: "Placeholder",
-            isOpen: false,
-            songs: [
-                { name: "Surf Zapping", star: "?", ura: false },
-                { name: "SORA‐Ⅶ シグナスウォール", star: "?", ura: false },
-                { name: "memoria ficta", star: "?", ura: false }
-            ],
-            conditions: defaultConditions, level: "---", desc: "QRコード・お題情報は準備中です。"
-        },
-        {
-            title: "復活！グリーン名人",
-            qrData: "Placeholder",
-            isOpen: false,
-            songs: [
-                { name: "弩蚊怒夏", star: "?", ura: false },
-                { name: "愛と浄罪の森", star: "?", ura: false },
-                { name: "コネクトカラーズ", star: "?", ura: false }
-            ],
-            conditions: defaultConditions, level: "---", desc: "QRコード・お題情報は準備中です。"
+            category: 3, title: "復活！グリーン名人", qrData: "Placeholder", isOpen: false,
+            songs: [{ name: "弩蚊怒夏", ura: false }, { name: "愛と浄罪の森", ura: false }, { name: "コネクトカラーズ", ura: false }],
+            conditions: defaultConditions
         }
     ];
 
-    const container = document.getElementById('cards-container');
     const badges = ['badge-1st', 'badge-2nd', 'badge-3rd'];
     const labels = ['1st', '2nd', '3rd'];
 
@@ -287,18 +169,21 @@
         let songsHTML = '';
         data.songs.forEach((song, idx) => {
             const isUra = song.ura;
+            // nameの後に(裏)を追加
+            const displayName = isUra ? `${song.name}(裏)` : song.name;
+            
+            // 星表示を消したため、アイコン周りの余白（-mt-1など）を調整
             const iconHTML = isUra
-                ? `<div class="w-6 h-6 bg-[#1a202c] rounded-full flex items-center justify-center border-2 border-gray-800 mb-[2px]"><span class="text-[#63b3ed] text-[10px] font-black tracking-tighter">裏</span></div>`
-                : `<svg viewBox="0 0 32 32" class="w-6 h-6"><path class="demon-icon" d="M6 30 L6 16 L2 4 L16 10 L30 4 L26 16 L26 30 Z" /><circle cx="12" cy="18" r="2" fill="#333"/><circle cx="20" cy="18" r="2" fill="#333"/></svg>`;
+                ? `<div class="w-7 h-7 bg-[#1a202c] rounded-full flex items-center justify-center border-2 border-gray-800"><span class="text-[#63b3ed] text-[11px] font-black tracking-tighter">裏</span></div>`
+                : `<svg viewBox="0 0 32 32" class="w-7 h-7"><path class="demon-icon" d="M6 30 L6 16 L2 4 L16 10 L30 4 L26 16 L26 30 Z" /><circle cx="12" cy="18" r="2" fill="#333"/><circle cx="20" cy="18" r="2" fill="#333"/></svg>`;
 
             songsHTML += `
                 <div class="bg-white rounded-full py-2.5 px-3 flex items-center shadow-sm border border-gray-100">
                     <div class="w-9 h-9 rounded-full ${badges[idx]} flex items-center justify-center font-black text-[13px] mr-2 shrink-0">${labels[idx]}</div>
-                    <div class="flex flex-col items-center justify-center mr-3 shrink-0 relative">
+                    <div class="flex items-center justify-center mr-3 shrink-0">
                         ${iconHTML}
-                        <span class="text-[10px] font-bold text-gray-800 ${!isUra ? '-mt-1' : ''}">★${song.star}</span>
                     </div>
-                    <div class="font-bold text-[15px] text-gray-900 truncate">${song.name}</div>
+                    <div class="font-bold text-[15px] text-gray-900 truncate">${displayName}</div>
                 </div>
             `;
         });
@@ -329,23 +214,19 @@
                     <div class="bg-white p-3 rounded-md shadow-sm w-[160px] mx-auto mt-2 mb-6 border border-gray-200 flex justify-center items-center">
                         <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${data.qrData}" alt="QR Code" class="w-full h-auto">
                     </div>
-                    <div class="space-y-3 mb-8">${songsHTML}</div>
-                    <div class="border-[2.5px] border-[#5b4636] rounded-lg relative pt-7 pb-4 px-4 mb-6 bg-[#fcf6e3]">
+                    <div class="space-y-3 mb-6">${songsHTML}</div>
+                    <div class="border-[2.5px] border-[#5b4636] rounded-lg relative pt-7 pb-4 px-4 bg-[#fcf6e3]">
                         <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-[#5b4636] text-white px-8 py-1.5 rounded-full text-[14px] font-bold tracking-wider whitespace-nowrap">お題情報</div>
                         ${conditionsHTML}
-                    </div>
-                    <div class="mb-4">
-                        <div class="bg-[#5b4636] text-white font-bold text-[13px] px-3 py-1.5 rounded-t-sm">難易度</div>
-                        <div class="bg-white text-gray-800 text-[15px] px-3 py-2 rounded-b-sm font-bold shadow-sm">${data.level}</div>
-                    </div>
-                    <div>
-                        <div class="bg-[#5b4636] text-white font-bold text-[13px] px-3 py-1.5 rounded-t-sm">補足説明</div>
-                        <div class="bg-white text-gray-800 text-[13px] leading-relaxed px-3 py-3 rounded-b-sm font-medium shadow-sm">${data.desc}</div>
                     </div>
                 </div>
             </details>
         `;
-        container.insertAdjacentHTML('beforeend', detailsHTML);
+        
+        const container = document.getElementById(`cards-container-${data.category}`);
+        if (container) {
+            container.insertAdjacentHTML('beforeend', detailsHTML);
+        }
     });
     </script>
 </body>
